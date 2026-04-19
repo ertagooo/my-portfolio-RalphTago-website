@@ -26,7 +26,9 @@
       <div class="landing-wrapper">
         <h1>Ralph Tago</h1>
         <h2>Full Stack Web Developer</h2>
-        <p>Welcome to my portfolio. Explore my projects, tools I use, and get in touch!</p>
+        <p>
+          Welcome to my portfolio. Explore my projects, tools I use, and get in touch!
+        </p>
       </div>
     </section>
 
@@ -34,7 +36,6 @@
     <section id="projects">
       <div class="projects-wrapper">
         <h2>My Projects</h2>
-        <p>Here are some of my current and future projects:</p>
 
         <div class="projects-grid">
           <div
@@ -56,7 +57,6 @@
     <section id="tools">
       <div class="tools-wrapper">
         <h2>Tools I Use</h2>
-        <p>Here are some of the tools and technologies I work with:</p>
 
         <ul class="tools-list">
           <li>HTML5</li>
@@ -77,36 +77,28 @@
         <form class="contact-form" @submit.prevent="submitForm">
 
           <div class="contact-group">
-            <label class="contact-label">Name</label>
-            <input
-              v-model="form.name"
-              type="text"
-              class="contact-input"
-              placeholder="John Doe"
-            />
+            <label>Name</label>
+            <input v-model="form.name" type="text" />
           </div>
 
           <div class="contact-group">
-            <label class="contact-label">Email</label>
-            <input
-              v-model="form.email"
-              type="email"
-              class="contact-input"
-              placeholder="john.doe@mail.com"
-            />
+            <label>Email</label>
+            <input v-model="form.email" type="email" />
           </div>
 
           <div class="contact-group">
-            <label class="contact-label">Message</label>
-            <textarea
-              v-model="form.message"
-              class="contact-textarea"
-              rows="5"
-              placeholder="Write your message here..."
-            ></textarea>
+            <label>Message</label>
+            <textarea v-model="form.message" rows="5"></textarea>
           </div>
 
-          <button type="submit" class="contact-submit-btn" :disabled="loading">
+          <!-- reCAPTCHA -->
+          <div
+            class="g-recaptcha"
+            data-sitekey="6LdxLL8sAAAAAJGUd1kc6cCAXceU3z4C58w7zxzs"
+            data-callback="onRecaptchaSuccess"
+          ></div>
+
+          <button type="submit" :disabled="loading">
             {{ loading ? "Sending..." : "Submit" }}
           </button>
 
@@ -118,8 +110,8 @@
 </template>
 
 <script>
-import projectsData from '../data/projects.json'
-import emailjs from '@emailjs/browser'
+import projectsData from "../data/projects.json"
+import emailjs from "@emailjs/browser"
 
 export default {
   name: "HomePage",
@@ -134,7 +126,19 @@ export default {
         name: "",
         email: "",
         message: ""
-      }
+      },
+
+      recaptchaToken: ""
+    }
+  },
+
+  mounted() {
+    window.onRecaptchaSuccess = (token) => {
+      this.recaptchaToken = token
+    }
+
+    window.onRecaptchaExpired = () => {
+      this.recaptchaToken = ""
     }
   },
 
@@ -146,6 +150,11 @@ export default {
     async submitForm() {
       if (!this.form.name || !this.form.email || !this.form.message) {
         alert("Please fill out all fields.")
+        return
+      }
+
+      if (!this.recaptchaToken) {
+        alert("Please verify that you are not a robot.")
         return
       }
 
@@ -168,10 +177,15 @@ export default {
         this.form.name = ""
         this.form.email = ""
         this.form.message = ""
+        this.recaptchaToken = ""
+
+        if (window.grecaptcha) {
+          window.grecaptcha.reset()
+        }
 
       } catch (error) {
         console.log("EmailJS Error:", error)
-        alert("Failed to send message. Please try again.")
+        alert("Failed to send message.")
       }
 
       this.loading = false
