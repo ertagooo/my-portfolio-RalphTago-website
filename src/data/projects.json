@@ -1,0 +1,32 @@
+[
+  {
+    "title": "E-commerce API Documentation",
+    "description": "Dynamic E-Commerce Workflow Management with real-time inventory and secure authentication.",
+    "image": "/images/2.png"
+  },
+  {
+    "title": "Course Booking API Documentation",
+    "description": "RESTful API for course enrollments with authentication and admin controls.",
+    "image": "/images/3.jpeg"
+  },
+  {
+    "title": "Course Booking App",
+    "description": "MERN-stack system with user authentication and course enrollment.",
+    "image": "/images/4.png"
+  },
+  {
+    "title": "E-commerce App",
+    "description": "Full MERN platform with product catalog, cart, and admin dashboard.",
+    "image": "/images/5.png"
+  },
+  {
+    "title": "Airline Booking System Mockup",
+    "description": "UI concept for flight booking and seat selection.",
+    "image": "/images/6.png"
+  },
+  {
+    "title": "Airline Booking System Prototype",
+    "description": "Interactive prototype with booking and payment simulation.",
+    "image": "/images/7.png"
+  }
+]

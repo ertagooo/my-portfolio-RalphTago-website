@@ -1,0 +1,233 @@
+/* ----------------------------
+   Base
+----------------------------- */
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  color: #5C4033;
+}
+
+/* ----------------------------
+   Navbar
+----------------------------- */
+.navbar {
+  width: 100%;
+  background-color: #B08A5A;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.nav-logo {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* ----------------------------
+   Sections
+----------------------------- */
+section {
+  min-height: 100vh;
+  padding: 100px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----------------------------
+   Landing
+----------------------------- */
+#landing {
+  background-color: #FFF3E6;
+  text-align: center;
+}
+
+#landing h1 {
+  font-size: 48px;
+  color: #765C3D;
+  margin-bottom: 10px;
+}
+
+#landing h2 {
+  font-size: 32px;
+  color: #B08A5A;
+  margin-bottom: 20px;
+}
+
+/* ----------------------------
+   Projects
+----------------------------- */
+#projects {
+  background-color: #FAD7A0;
+  text-align: center;
+}
+
+.projects-wrapper h2 {
+  font-size: 36px;
+  color: #765C3D;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.project-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* ----------------------------
+   Tools
+----------------------------- */
+#tools {
+  background-color: #F5CBA7;
+  text-align: center;
+}
+
+.tools-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.tools-list li {
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* ----------------------------
+   Contact
+----------------------------- */
+#contact {
+  background-color: #FFF3E6;
+  text-align: center;
+}
+
+.contact-wrapper {
+  max-width: 500px;
+  width: 100%;
+}
+
+.contact-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #C9A67D;
+}
+
+.contact-submit-btn {
+  background-color: #B08A5A;
+  color: #fff;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+/* ----------------------------
+   Mobile
+----------------------------- */
+@media (max-width: 1024px) {
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #B08A5A;
+    flex-direction: column;
+    width: 200px;
+    padding: 10px 0;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #landing h1 {
+    font-size: 32px;
+  }
+
+  #landing h2 {
+    font-size: 24px;
+  }
+}
