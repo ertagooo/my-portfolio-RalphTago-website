@@ -36,6 +36,7 @@
     <section id="projects">
       <div class="projects-wrapper">
         <h2>My Projects</h2>
+        <p>Here are some of my current and future projects:</p>
 
         <div class="projects-grid">
           <div
@@ -57,6 +58,7 @@
     <section id="tools">
       <div class="tools-wrapper">
         <h2>Tools I Use</h2>
+        <p>Here are some of the tools and technologies I work with:</p>
 
         <ul class="tools-list">
           <li>HTML5</li>
@@ -77,18 +79,33 @@
         <form class="contact-form" @submit.prevent="submitForm">
 
           <div class="contact-group">
-            <label>Name</label>
-            <input v-model="form.name" type="text" />
+            <label class="contact-label">Name</label>
+            <input
+              v-model="form.name"
+              type="text"
+              class="contact-input"
+              placeholder="John Doe"
+            />
           </div>
 
           <div class="contact-group">
-            <label>Email</label>
-            <input v-model="form.email" type="email" />
+            <label class="contact-label">Email</label>
+            <input
+              v-model="form.email"
+              type="email"
+              class="contact-input"
+              placeholder="john.doe@mail.com"
+            />
           </div>
 
           <div class="contact-group">
-            <label>Message</label>
-            <textarea v-model="form.message" rows="5"></textarea>
+            <label class="contact-label">Message</label>
+            <textarea
+              v-model="form.message"
+              class="contact-textarea"
+              rows="5"
+              placeholder="Write your message here..."
+            ></textarea>
           </div>
 
           <!-- reCAPTCHA -->
@@ -98,7 +115,11 @@
             data-callback="onRecaptchaSuccess"
           ></div>
 
-          <button type="submit" :disabled="loading">
+          <button
+            type="submit"
+            class="contact-submit-btn"
+            :disabled="loading"
+          >
             {{ loading ? "Sending..." : "Submit" }}
           </button>
 
